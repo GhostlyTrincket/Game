@@ -1,17 +1,22 @@
 #include <iostream>
 #include "game.h"
-#include "constructs.h"
 
 int main() {
 	intro();
 	show_options();
 
-	while(true) {
+	const bool game_loop = true;
+	bool player_key = false;
+	bool ending_unlocked = false;
+
+	while(game_loop) {
 		std::cout << ">> ";
 		char input = ' ';
 		std::cin >> input;
 
-		if(main_loop(input) || GameConstruct::user_exit)
+		ending_unlocked = make_action(input, player_key);
+
+		if(ending_unlocked)
 			break;
 	}
 
