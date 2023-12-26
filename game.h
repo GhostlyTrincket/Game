@@ -5,8 +5,8 @@ void intro();
 void show_options();
 void look_around();
 
-int get_key();
+int get_key(bool);
 int inspect_door(bool);
-int main_loop(char);
+int make_action(char, bool);
 
 #endif
