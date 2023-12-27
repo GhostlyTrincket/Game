@@ -45,24 +45,29 @@ bool inspect_door(bool has_key) {
 int make_action(char input, bool key_stat) {
 	static bool tmp_key_stat = key_stat;
 
-	if(input == 'A') {
-		inspect_door(tmp_key_stat);
-		return tmp_key_stat;
+	switch(input) {
+		case 'A':
+			inspect_door(tmp_key_stat);
+			return tmp_key_stat;
+		break;
+		case 'P':
+			tmp_key_stat = get_key(key_stat);
+		break;
+		case 'O':
+			look_around();
+		break;
+		case 'M':
+			show_options();
+		break;
+		case 'S':
+			tmp_key_stat = true;
+			return tmp_key_stat;
+		break;
+		[[fallthrough]];
+		case ' ':
+		default:
+			std::cout << "Comando não identificado!\n";
+		break;
 	}
-
-	if(input == 'P')
-		tmp_key_stat = get_key(key_stat);
-
-	if(input == 'O')
-		look_around();
-
-	if(input == 'M')
-		show_options();
-	
-	if(input == 'S') {
-		tmp_key_stat = true;
-		return tmp_key_stat;
-	}
-
 	return 0;
 }
