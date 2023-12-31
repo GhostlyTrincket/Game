@@ -6,7 +6,7 @@ void show_options();
 void look_around();
 
 int get_key(bool);
-int inspect_door(bool);
-int make_action(char, bool);
+bool inspect_door(bool);
+void make_action(char);
 
 #endif

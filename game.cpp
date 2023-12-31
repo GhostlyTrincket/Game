@@ -21,25 +21,20 @@ void look_around() {
 	std::cout << "e uma porta que pode te libertar a sua direita.\n";
 }
 
-bool get_key(bool key_stat) {
-	if(!key_stat) {
-		std::cout << "Você pega a chave. Foi mais facil do que o esperado.\n";
-	} else {
-		std::cout << "Você já pegou a chave, não tem nada mais aqui.\n";
-	}
-
+bool get_key() {
+	std::cout << "Você pega a chave. Foi mais facil do que o esperado.\n";
 	return true;
 }
 
-bool inspect_door(bool has_key) {
-	if(!has_key) {
+bool inspect_door(bool key_stat) {
+	if(!key_stat) {
 		std::cout << "Você não tem a chave para abrir a porta!\n";
 		return false;
 	}
 
 	std::cout << "Você abre a porta que estava trancada.\n";
 	std::cout << "Você está finalmente: LIVRE!\n";
-	return true;
+	exit(0); // best that i could think
 }
 
 int make_action(char input, bool key_stat) {
