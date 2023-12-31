@@ -37,16 +37,15 @@ bool inspect_door(bool key_stat) {
 	exit(0); // best that i could think
 }
 
-int make_action(char input, bool key_stat) {
-	static bool tmp_key_stat = key_stat;
+void make_action(char input) {
+	static bool got_key = false;
 
 	switch(input) {
 		case 'A':
-			inspect_door(tmp_key_stat);
-			return tmp_key_stat;
+			inspect_door(got_key);
 		break;
 		case 'P':
-			tmp_key_stat = get_key(key_stat);
+			got_key = get_key();
 		break;
 		case 'O':
 			look_around();
@@ -55,14 +54,9 @@ int make_action(char input, bool key_stat) {
 			show_options();
 		break;
 		case 'S':
-			tmp_key_stat = true;
-			return tmp_key_stat;
 		break;
-		[[fallthrough]];
-		case ' ':
 		default:
 			std::cout << "Comando não identificado!\n";
 		break;
 	}
-	return 0;
 }
