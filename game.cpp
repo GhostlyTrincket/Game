@@ -60,3 +60,15 @@ void make_action(char input) {
 		break;
 	}
 }
+
+void run_game() {
+	const bool game_loop = true;
+
+	while(game_loop) {
+		std::cout << ">> ";
+		char input = ' ';
+		std::cin >> input;
+
+		make_action(input);
+	}
+}
